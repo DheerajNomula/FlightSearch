@@ -9,6 +9,7 @@ import org.personal.searchStrategy.MinimumHopsStrategy;
 import org.personal.services.FlightSearchService;
 import org.personal.services.FlightService;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -78,17 +79,35 @@ public class FlightSystem {
         }
     }
 
+    private static List<String> getCommands() {
+        return Arrays.asList(
+                "register flight->DEL->BLR->JetAir->500",
+                "register flight->BLR->LON->JetAir->1000",
+                "register flight->DEL->LON->Delta->2000",
+                "register flight->LON->NYC->Delta->2000",
+                "register flight->LON->NYC->IndiGo->2500",
+                "register flight->DEL->BLR->IndiGo->600",
+                "register flight->BLR->PAR->IndiGo->800",
+                "register flight->PAR->LON->IndiGo->300",
+                "search flight->DEL->NYC",
+                "search flight->DEL->NYC->IndiGo"
+        );
+    }
     public static void main(String[] args) {
         FlightSystem flightSystem = new FlightSystem();
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            String input = scanner.nextLine();
-            if (input.equalsIgnoreCase("exit")) {
-                break;
-            }
-            flightSystem.processInput(input);
+        for(String command:getCommands()) {
+            flightSystem.processInput(command);
         }
+
+//        while (true) {
+//            String input = scanner.nextLine();
+//            if (input.equalsIgnoreCase("exit")) {
+//                break;
+//            }
+//            flightSystem.processInput(input);
+//        }
         scanner.close();
     }
 }

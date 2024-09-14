@@ -17,9 +17,9 @@ public class FlightService {
     public static void validateFlight(String src, String dest, String airline, double price) {
         if (price <= 0)
             throw new ApiException("Price should be greater than 0");
-        if (src.length() == 3)
+        if (src.length() != 3)
             throw new ApiException("Source length should be equal to 3");
-        if (dest.length() == 3)
+        if (dest.length() != 3)
             throw new ApiException("Destination length should be equal to 3");
         if (airline.length() < 3)
             throw new ApiException("Destination length should be greater than 3");

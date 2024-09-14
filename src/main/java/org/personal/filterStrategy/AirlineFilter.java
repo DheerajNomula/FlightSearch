@@ -2,7 +2,7 @@ package org.personal.filterStrategy;
 
 import org.personal.model.Flight;
 
-public class AirlineFilter implements FilterStrategy {
+public class AirlineFilter implements Filter {
     private String airline;
 
     public AirlineFilter(String airline) {

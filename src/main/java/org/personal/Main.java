@@ -1,16 +1,6 @@
 package org.personal;
 
-import org.personal.model.Flight;
-import org.personal.repositories.FlightRepository;
-import org.personal.searchStrategy.CheapestStrategy;
-import org.personal.searchStrategy.MinimumHopsStrategy;
-import org.personal.services.FlightSearchService;
-import org.personal.services.FlightService;
-
-import java.util.List;
 import java.util.Scanner;
-
-import static org.personal.OutputDisplayer.printFlights;
 
 public class Main {
 

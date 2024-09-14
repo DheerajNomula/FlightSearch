@@ -1,6 +1,6 @@
 package org.personal.searchStrategy;
 
-import org.personal.filterStrategy.FilterStrategy;
+import org.personal.filterStrategy.Filter;
 import org.personal.model.Flight;
 
 import java.util.*;
@@ -9,7 +9,7 @@ public class MinimumHopsStrategy implements FlightSearchStrategy {
     private List<Flight> bestPath;
     private int minHops;
     private HashMap<String, List<Flight>> graph;
-    private FilterStrategy filter;
+    private Filter filter;
 
     private void dfs(HashMap<String, List<Flight>> graph, String currentCity, String destination,
                      List<Flight> currentPath, Set<String> visited, int hops) {
@@ -23,7 +23,7 @@ public class MinimumHopsStrategy implements FlightSearchStrategy {
 
         visited.add(currentCity);
         for (Flight flight : graph.getOrDefault(currentCity, Collections.emptyList())) {
-            if (!visited.contains(flight.getDestination())) {
+            if (!visited.contains(flight.getDestination()) && filter.filter(flight)) {
                 currentPath.add(flight);
                 dfs(graph, flight.getDestination(), destination, currentPath, visited, hops + 1);
                 currentPath.remove(currentPath.size() - 1);
@@ -33,7 +33,7 @@ public class MinimumHopsStrategy implements FlightSearchStrategy {
     }
 
     @Override
-    public List<Flight> searchFlights(HashMap<String, List<Flight>> graph, String source, String destination, FilterStrategy filter) {
+    public List<Flight> searchFlights(HashMap<String, List<Flight>> graph, String source, String destination, Filter filter) {
         this.filter = filter;
         bestPath = new ArrayList<>();
         minHops = Integer.MAX_VALUE;

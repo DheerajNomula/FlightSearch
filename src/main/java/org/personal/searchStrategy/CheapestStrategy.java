@@ -1,6 +1,6 @@
 package org.personal.searchStrategy;
 
-import org.personal.filterStrategy.FilterStrategy;
+import org.personal.filterStrategy.Filter;
 import org.personal.model.Flight;
 
 import java.util.*;
@@ -11,7 +11,7 @@ public class CheapestStrategy implements FlightSearchStrategy {
     private double minCost;
     private HashMap<String, List<Flight>> graph;
 
-    private FilterStrategy filter;
+    private Filter filter;
 
 
     private void dfs(String currentCity, String destination, LinkedList<Flight> currentPath, Set<String> visited, double currentCost) {
@@ -35,7 +35,7 @@ public class CheapestStrategy implements FlightSearchStrategy {
     }
 
     @Override
-    public List<Flight> searchFlights(HashMap<String, List<Flight>> graph, String source, String destination, FilterStrategy filter) {
+    public List<Flight> searchFlights(HashMap<String, List<Flight>> graph, String source, String destination, Filter filter) {
         this.filter = filter;
         bestPath = new ArrayList<>();
         minCost = Double.MAX_VALUE;
