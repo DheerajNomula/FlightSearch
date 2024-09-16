@@ -88,9 +88,9 @@ public class FlightSystem {
                 "register flight->LON->NYC->IndiGo->2500",
                 "register flight->DEL->BLR->IndiGo->600",
                 "register flight->BLR->PAR->IndiGo->800",
-                "register flight->PAR->LON->IndiGo->300",
+                "register flight->PAR->LON->IndiGo->100",
                 "search flight->DEL->NYC",
-                "search flight->DEL->NYC->IndiGo"
+                "search flight->DEL->NYC->JetAir"
         );
     }
     public static void main(String[] args) {

@@ -9,7 +9,9 @@ import java.util.List;
 public class FlightRepository {
 
     List<Flight> flightList;
-    HashMap<String, List<Flight>> srcFlightsMap;
+    HashMap<String, List<Flight>> srcFlightsMap; // key -> source,
+
+    // key -> source + dest -> list of flights
 
     public FlightRepository() {
         flightList = new LinkedList<>();
